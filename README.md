@@ -1,4 +1,9 @@
-# Đây là nhánh dev, dành cho việc gộp code và demo
+# Đây là nhánh letris118
+
+- Tìm sprite spaceship
+- Cơ chế bắn đạn => nổ thiên thạch
+- Cơ chế đụng thiên thạch, chết => thoát game
+- Cơ chế ăn star => cộng điểm
 
 # Cấu trúc file thư mục của dự án
 
