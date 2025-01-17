@@ -1,3 +1,5 @@
+# Đây là nhánh dev, dành cho việc gộp code và demo
+
 # Cấu trúc file thư mục của dự án
 
 ```Arduino
