@@ -1,4 +1,9 @@
-# Đây là nhánh dev, dành cho việc gộp code và demo
+# Đây là nhánh hoangxuan226
+
+- Tìm sprite thiên thạch, star
+- Random thiên thạch, random ngôi sao
+- Âm thanh khi thiên thạch nổ
+- Âm thanh khi ăn ngôi sao
 
 # Cấu trúc file thư mục của dự án
 
