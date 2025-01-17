@@ -1,4 +1,8 @@
-# Đây là nhánh dev, dành cho việc gộp code và demo
+# Đây là nhánh TuanPham
+
+- 2 map hoặc nhiều hơn (tự tìm map và transition cho mượt)
+- Trôi nhanh dần theo thời gian (level game)
+- Âm thanh background cho từng map
 
 # Cấu trúc file thư mục của dự án
 
