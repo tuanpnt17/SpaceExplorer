@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnPlayPress()
     {
-
+        //SceneManager.LoadScene("GameScene");
     }
     public void OnExitPress()
     {
