@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7548ca6b4341a5c4fad353db162595b2
+guid: 57532491e2ba6af4e80787723c10c3f6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8500721372876394068
-    second: Green_Nebula_02-1024x1024_0
+      213: 8896000570720629069
+    second: Purple7_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,13 +40,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Green_Nebula_02-1024x1024_0
+      name: Purple7_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca1b12b33fe570a80800000000000000
-      internalID: -8500721372876394068
+      spriteID: d41b973d261f47b70800000000000000
+      internalID: 8896000570720629069
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Green_Nebula_02-1024x1024_0: -8500721372876394068
+      Purple7_0: 8896000570720629069
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
