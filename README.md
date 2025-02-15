@@ -1,9 +1,4 @@
-# Đây là nhánh zollie
-
-- Màn load game, màn hình chính (highest scored, play button, instruction button)
-- Màn hình end game (Current score, return to main menu, quit game)
-- Trong lúc chơi: Số ngôi sao (score) hiện tại
-- Âm thanh chung
+# Đây là nhánh dev, dành cho việc gộp code và demo
 
 # Cấu trúc file thư mục của dự án
 
