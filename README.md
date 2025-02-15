@@ -1,3 +1,10 @@
+# Đây là nhánh jadevpham
+
+- Màn load game, màn hình chính (highest scored, play button, instruction button)
+- Màn hình end game (Current score, return to main menu, quit game)
+- Trong lúc chơi: Số ngôi sao (score) hiện tại
+- Âm thanh chung
+
 # Cấu trúc file thư mục của dự án
 
 ```Arduino
