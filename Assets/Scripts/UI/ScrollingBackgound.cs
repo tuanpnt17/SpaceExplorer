@@ -7,8 +7,7 @@ public class ScrollingBackgound : MonoBehaviour
     private RawImage _image;
 
     [SerializeField]
-    private float _x,
-        _y;
+    private float _x, _y;
 
     // Update is called once per frame
     void Update()

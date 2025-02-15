@@ -582,7 +582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9, y: 72.648}
+  m_AnchoredPosition: {x: -9, y: 72.64801}
   m_SizeDelta: {x: -306.0417, y: -334.3853}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &251836280
@@ -1127,7 +1127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9, y: -59.286}
+  m_AnchoredPosition: {x: -9, y: -59.28601}
   m_SizeDelta: {x: -551.2828, y: -231.4281}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &676192691
@@ -1142,7 +1142,6 @@ GameObject:
   - component: {fileID: 676192695}
   - component: {fileID: 676192694}
   - component: {fileID: 676192693}
-  - component: {fileID: 676192696}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1230,21 +1229,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676192691}
   m_CullTransparentMesh: 1
---- !u!114 &676192696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676192691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ff615782c51ba64bbbce9e5c2d33125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _image: {fileID: 0}
-  _x: 0
-  _y: 0
 --- !u!1 &715012270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,7 +2347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -54.000015}
+  m_AnchoredPosition: {x: 0, y: -54}
   m_SizeDelta: {x: -636.794, y: -329.483}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1557926638
@@ -2504,7 +2488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 91.59, y: -87.686}
+  m_AnchoredPosition: {x: 91.59, y: -87.686005}
   m_SizeDelta: {x: -183.1797, y: -192.6866}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882635883
@@ -2674,8 +2658,8 @@ Canvas:
   m_GameObject: {fileID: 1909020372}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 603319019}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

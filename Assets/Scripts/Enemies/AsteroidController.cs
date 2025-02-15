@@ -38,22 +38,23 @@ public class AsteroidController : MonoBehaviour
     {
         // change to spaceship
         //SpaceshipDemo player = other.gameObject.GetComponent<SpaceshipDemo>();
-        //if (player != null)
-        //{
-        //    //player.ChangeHealth(-1); // if spaceship collides with asteroid, decrease health by 1
-        //    Explode();
-        //    return;
-        //}
+        if (other.CompareTag("Player"))
+        {
+            Explode();
+            return;
+        }
 
         //ProjectileDemo projectile = other.gameObject.GetComponent<ProjectileDemo>();
-        //if (projectile != null)
-        //{
-        //    currentHealth -= damagePerHit;
-        //    if (currentHealth <= 0)
-        //    {
-        //        Explode();
-        //    }
-        //}
+        if (other.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
+			currentHealth -= damagePerHit;
+            if (currentHealth <= 0)
+            {
+                Explode();
+            }
+        }
+
     }
 
     public void ExplosionDone()
