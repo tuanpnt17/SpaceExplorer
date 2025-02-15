@@ -1,8 +1,9 @@
-# Đây là nhánh TuanPham
+# Đây là nhánh zollie
 
-- 2 map hoặc nhiều hơn (tự tìm map và transition cho mượt)
-- Trôi nhanh dần theo thời gian (level game)
-- Âm thanh background cho từng map
+- Màn load game, màn hình chính (highest scored, play button, instruction button)
+- Màn hình end game (Current score, return to main menu, quit game)
+- Trong lúc chơi: Số ngôi sao (score) hiện tại
+- Âm thanh chung
 
 # Cấu trúc file thư mục của dự án
 
