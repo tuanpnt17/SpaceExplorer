@@ -1,9 +1,9 @@
-# Đây là nhánh letris118
+# Đây là nhánh jadevpham
 
-- Tìm sprite spaceship
-- Cơ chế bắn đạn => nổ thiên thạch
-- Cơ chế đụng thiên thạch, chết => thoát game
-- Cơ chế ăn star => cộng điểm
+- Màn load game, màn hình chính (highest scored, play button, instruction button)
+- Màn hình end game (Current score, return to main menu, quit game)
+- Trong lúc chơi: Số ngôi sao (score) hiện tại
+- Âm thanh chung
 
 # Cấu trúc file thư mục của dự án
 
