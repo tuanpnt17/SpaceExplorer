@@ -14,7 +14,8 @@ public class ShipController : MonoBehaviour
     [SerializeField]
     private float projectileSpeed = 10f;
     private AudioManager audioManager;
-    public int score = 0;
+
+    //public int score = 0;
 
     [SerializeField]
     private GameObject projectilePrefab;
@@ -55,8 +56,8 @@ public class ShipController : MonoBehaviour
         if (collision.CompareTag("Star"))
         {
             audioManager.PlayCollectSound();
-            Destroy(collision.gameObject);
-            score++;
+            //Destroy(collision.gameObject);    reuse the star
+            //score++;
         }
         if (collision.CompareTag("Asteroid"))
         {
@@ -64,7 +65,7 @@ public class ShipController : MonoBehaviour
             if (shield == null)
             {
                 Destroy(gameObject);
-                SceneManager.LoadScene("EndGame");
+                //SceneManager.LoadScene("EndGame");
             }
         }
         if (collision.CompareTag("Shield"))

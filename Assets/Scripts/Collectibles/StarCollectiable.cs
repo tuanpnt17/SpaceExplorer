@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class StarCollectiable : MonoBehaviour
 {
-    public GameObject collectibleSound;
     public float speed;
     public string idleAnimationName;
 
-    private event Action OnDestroyed;
     private Animator animator;
+    private GameSpawner spawnerInstance;
 
     void Awake()
     {
@@ -27,19 +26,11 @@ public class StarCollectiable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // change to spaceship
-        //SpaceshipDemo controller = other.GetComponent<SpaceshipDemo>();
-        //if (controller != null)
-        //{
-        //    GameObject soundObject = Instantiate(
-        //        collectibleSound,
-        //        transform.position,
-        //        Quaternion.identity
-        //    );
-        //    Destroy(soundObject, soundObject.GetComponent<AudioSource>().clip.length);
-        //    Debug.Log("Star collected!"); // change to update the score
-        //    DestroyStar();
-        //}
+        if (other.CompareTag("Player"))
+        {
+            spawnerInstance.HandleStarCollected();
+            DestroyStar();
+        }
     }
 
     public void SetStartTime(float normalizedStartTime)
@@ -55,9 +46,10 @@ public class StarCollectiable : MonoBehaviour
         speed = s;
     }
 
-    public void AddOnDestroyedListener(Action listener)
+    public void SetSpawner(GameSpawner spawner)
     {
-        OnDestroyed = listener;
+        if (spawnerInstance == null)
+            spawnerInstance = spawner;
     }
 
     private void MoveStar()
@@ -67,7 +59,6 @@ public class StarCollectiable : MonoBehaviour
 
     private void DestroyStar()
     {
-        OnDestroyed?.Invoke();
-        gameObject.SetActive(false);
+        spawnerInstance.HandleStarDestroyed(gameObject);
     }
 }
