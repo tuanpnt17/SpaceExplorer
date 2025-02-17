@@ -20,7 +20,6 @@ public class MenuManager : MonoBehaviour
         // Giả sử người chơi đạt 120 điểm
         //int currentScore = 120;
         //scoreManager.SaveBestScore(currentScore);
-
         int bestScore = scoreManager.LoadBestScore();
         Debug.Log("Best Score: " + bestScore);
 
