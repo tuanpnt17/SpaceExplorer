@@ -47,5 +47,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Star
+    uniqueID: 3396496587
+    locked: 0
+  - name: PowerUp
+    uniqueID: 3876738859
+    locked: 0
   m_RenderingLayers:
   - Default

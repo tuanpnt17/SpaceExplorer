@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using UnityEngine;
+﻿using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -7,20 +6,20 @@ using Vector3 = UnityEngine.Vector3;
 public class AsteroidController : MonoBehaviour
 {
     public float damagePerHit = 0.5f;
-    private float currentHealth;
-    private Animator animator;
-
     public GameObject explosionSoundPrefab;
 
+    private GameSpawner spawnerInstance;
     private float rotationSpeed;
-
     private float speed;
     private Vector2 moveDirection;
+    private float currentHealth;
+    private Animator animator;
+    private Collider2D collider2d;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
-        currentHealth = transform.localScale.x; // set health equal to scale of asteroid
+        collider2d = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -30,14 +29,12 @@ public class AsteroidController : MonoBehaviour
 
         if (transform.position.y < -Camera.main.orthographicSize - 1f) // destroy asteroid if it goes off-screen
         {
-            Destroy(gameObject);
+            DestroyAsteroid();
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // change to spaceship
-        //SpaceshipDemo player = other.gameObject.GetComponent<SpaceshipDemo>();
         if (other.CompareTag("Player"))
         {
             Explode();
@@ -48,18 +45,17 @@ public class AsteroidController : MonoBehaviour
         if (other.CompareTag("🚀"))
         {
             Destroy(other.gameObject);
-			currentHealth -= damagePerHit;
+            currentHealth -= damagePerHit;
             if (currentHealth <= 0)
             {
                 Explode();
             }
         }
-
     }
 
     public void ExplosionDone()
     {
-        Destroy(gameObject);
+        DestroyAsteroid();
     }
 
     public void SetRotationSpeed(float rs)
@@ -77,8 +73,22 @@ public class AsteroidController : MonoBehaviour
         moveDirection = dir;
     }
 
+    public void SetSpawner(GameSpawner spawner)
+    {
+        if (spawnerInstance == null)
+            spawnerInstance = spawner;
+    }
+
+    public void StartForObjectPooling()
+    {
+        collider2d.enabled = true;
+        animator.Play("Default");
+        currentHealth = transform.localScale.x; // set health equal to scale of asteroid
+    }
+
     private void Explode()
     {
+        collider2d.enabled = false;
         GameObject soundObject = Instantiate(
             explosionSoundPrefab,
             transform.position,
@@ -86,6 +96,7 @@ public class AsteroidController : MonoBehaviour
         );
         Destroy(soundObject, soundObject.GetComponent<AudioSource>().clip.length);
         animator.SetTrigger("Explore");
+        spawnerInstance.ExplodeAsteroid(transform.position, transform.localScale.x);
     }
 
     private void RotateAsteroid()
@@ -96,5 +107,10 @@ public class AsteroidController : MonoBehaviour
     private void MoveAsteroid()
     {
         transform.position += (Vector3)moveDirection * speed * Time.deltaTime;
+    }
+
+    private void DestroyAsteroid()
+    {
+        spawnerInstance.HandleAsteroidDestroyed(gameObject);
     }
 }
