@@ -23,31 +23,48 @@ public class ShipController : MonoBehaviour
     private GameObject shieldPrefab;
     private GameObject shield;
 
+    // Camera
+    private Vector2 minBounds;
+    private Vector2 maxBounds;
+
+    // Ship
+    private float objectWidth;
+    private float objectHeight;
+
+    // health
+    private float _currentHealth = 3.0f;
+    private int _maxHealth = 3;
+
     // Start is called before the first frame update
     void Start()
     {
         audioManager = FindAnyObjectByType<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        minBounds = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        maxBounds = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        objectWidth = spriteRenderer.bounds.extents.x;
+        objectHeight = spriteRenderer.bounds.extents.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleMovement();
-        HandleSpaceShooting();
-    }
-
-    private void HandleMovement()
-    {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
         movement = new Vector2(moveHorizontal, moveVertical);
+        HandleSpaceShooting();
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = movement * spaceShipSpeed;
+        //rb.linearVelocity = movement * spaceShipSpeed;
+        Vector2 pos = rb.position + movement * spaceShipSpeed * Time.deltaTime;
+
+        pos.x = Mathf.Clamp(pos.x, minBounds.x + objectWidth, maxBounds.x - objectWidth);
+        pos.y = Mathf.Clamp(pos.y, minBounds.y, maxBounds.y - objectHeight * 10);
+        rb.MovePosition(pos);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,14 +74,23 @@ public class ShipController : MonoBehaviour
             audioManager.PlayCollectSound();
             Destroy(collision.gameObject);
             score++;
+            GameUIHandler.Instance.SetStarValue(score);
         }
         if (collision.CompareTag("Asteroid"))
         {
             audioManager.PlayExplodeSound();
             if (shield == null)
             {
-                Destroy(gameObject);
-                SceneManager.LoadScene("EndGame");
+                // Destroy(gameObject);
+                _currentHealth -= 1.0f;
+                GameUIHandler.Instance.SetHealthValue(_currentHealth / (float)_maxHealth);
+                Debug.Log("Health: " + _currentHealth);
+                if (_currentHealth <= 0)
+                {
+                    Debug.Log("Game Over");
+                    Destroy(gameObject);
+                    SceneManager.LoadScene("EndGame");
+                }
             }
         }
         if (collision.CompareTag("Shield"))
