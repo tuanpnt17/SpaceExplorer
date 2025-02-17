@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3295999854785441926}
   m_Layer: 0
   m_Name: HeartBonus
-  m_TagString: Untagged
+  m_TagString: "\u2764\uFE0F"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -63,7 +63,6 @@ public class ShipController : MonoBehaviour
     void Start()
     {
         spawnPoint = transform.position;
-        StartCoroutine(TripleShotPowerUp());
         audioManager = FindAnyObjectByType<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
@@ -77,7 +76,6 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleHp();
         HandleMovement();
         HandleSpaceShooting();
     }
@@ -110,7 +108,6 @@ public class ShipController : MonoBehaviour
         if (collision.CompareTag("⭐"))
         {
             audioManager.PlayCollectSound();
-            Destroy(collision.gameObject);
             score++;
         }
         if (collision.CompareTag("☄️"))
@@ -121,30 +118,27 @@ public class ShipController : MonoBehaviour
             {
                 GainHP(-1);
                 Instantiate(shipExplosionPrefab, transform.position, Quaternion.identity);
-                transform.position = new Vector2(1000, 1000);
+                transform.position = new Vector2(100000, 1000);
                 StartCoroutine(Respawn());
 
-                _currentHealth -= 1.0f;
-                GameUIHandler.Instance.SetHealthValue(_currentHealth / (float)_maxHealth);
+                GameUIHandler.Instance.SetHealthValue(hp / (float)_maxHealth);
 
-                if (_currentHealth <= 0)
+                if (hp <= 0)
                 {
-                    Destroy(gameObject);
                     SceneManager.LoadScene("EndGame");
                 }
             }
         }
         if (collision.CompareTag("🛡️"))
         {
-            Destroy(collision.gameObject);
             ShieldBuff();
         }
         if (collision.CompareTag("❤️"))
         {
-            Destroy(collision.gameObject);
             GainHP(1);
-        }
-        if (collision.CompareTag("🚀🚀🚀"))
+			GameUIHandler.Instance.SetHealthValue(hp / (float)_maxHealth);
+		}
+		if (collision.CompareTag("🚀🚀🚀"))
         {
             StartCoroutine(TripleShotPowerUp());
         }
@@ -167,13 +161,6 @@ public class ShipController : MonoBehaviour
         ShieldBuff();
     }
 
-    private void HandleHp()
-    {
-        if (hp == 0)
-        {
-            SceneManager.LoadScene("EndGame");
-        }
-    }
 
     private void HandleSpaceShooting()
     {

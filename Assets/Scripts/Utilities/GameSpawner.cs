@@ -45,7 +45,7 @@ public class GameSpawner : MonoBehaviour
 
     [Header("Power-Up Settings")]
     public GameObject[] powerUpPrefabs; // Shield, Health, Ammo
-    private List<int> powerUpDropBuckets = new List<int> { 5, 10, 15, 20 };
+    private List<int> powerUpDropBuckets = new List<int> { 1, 2, 3, 4, 5 };
     private int asteroidKillCount = 0;
     private int nextPowerUpDrop = 5;
 
@@ -365,7 +365,7 @@ public class GameSpawner : MonoBehaviour
         powerUpDropBuckets.RemoveAt(0);
         if (powerUpDropBuckets.Count == 0)
         {
-            powerUpDropBuckets = new List<int> { 5, 10, 15, 20 };
+            powerUpDropBuckets = new List<int> { 1, 2, 3, 4, 5 };
             ShufflePowerUpBuckets();
         }
         nextPowerUpDrop += powerUpDropBuckets[0];

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -158376085611066499}
   m_Layer: 0
   m_Name: ShieldBonus
-  m_TagString: Untagged
+  m_TagString: "\U0001F6E1\uFE0F"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
