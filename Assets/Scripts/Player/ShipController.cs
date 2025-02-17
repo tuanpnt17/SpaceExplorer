@@ -36,9 +36,6 @@ public class ShipController : MonoBehaviour
     private float _currentHealth = 3.0f;
     private int _maxHealth = 3;
 
-    private bool isLoadLevel2 = false;
-    private bool isLoadLevel3 = false;
-
     //private int score;
 
     private void Awake()
@@ -83,7 +80,7 @@ public class ShipController : MonoBehaviour
         if (collision.CompareTag("Star"))
         {
             audioManager.PlayCollectSound();
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             //score++;
         }
         if (collision.CompareTag("Asteroid"))
