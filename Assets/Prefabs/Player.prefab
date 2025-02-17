@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: b3ea2554f19fae841938cbd7aa6ab5f3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b3ea2554f19fae841938cbd7aa6ab5f3, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -137,12 +141,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c7d46fe83b1514d96cc75eee894a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceShipSpeed: 5
+  speed: 5
   firePoint: {fileID: 3351605408694489812}
   projectileSpeed: 10
-  score: 0
   projectilePrefab: {fileID: 2191344125073939170, guid: 92ffb46debbf59f4ca0ed896e1b95cc1, type: 3}
+  score: 0
   shieldPrefab: {fileID: 2182253916237983180, guid: a6dc1605c40dc654d858bd21a0aa958c, type: 3}
+  shipExplosionPrefab: {fileID: 0}
+  hp: 3
 --- !u!61 &8670100697896356204
 BoxCollider2D:
   m_ObjectHideFlags: 0

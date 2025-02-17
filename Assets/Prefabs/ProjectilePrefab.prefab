@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: b9ced62ad3670ce419b537acc74404d7, type: 3}
       propertyPath: m_TagString
-      value: Projectile
+      value: "\U0001F680"
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b9ced62ad3670ce419b537acc74404d7, type: 3}
       propertyPath: m_LocalScale.x

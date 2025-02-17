@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -41,7 +41,8 @@ public class AsteroidController : MonoBehaviour
             return;
         }
 
-        if (other.CompareTag("Projectile"))
+        //ProjectileDemo projectile = other.gameObject.GetComponent<ProjectileDemo>();
+        if (other.CompareTag("🚀"))
         {
             Destroy(other.gameObject);
             currentHealth -= damagePerHit;
