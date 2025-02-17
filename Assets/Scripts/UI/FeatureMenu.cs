@@ -5,16 +5,13 @@ public class FeatureMenu : MonoBehaviour
 {
     public void Menu()
     {
-        SceneManager.LoadScene(1);
-    }   
-    
+        SceneManager.LoadScene("Menu");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void Score() 
-    {
-       
-    }
+    public void Score() { }
 }
