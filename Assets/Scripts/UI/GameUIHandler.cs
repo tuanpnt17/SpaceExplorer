@@ -19,6 +19,7 @@ public class GameUIHandler : MonoBehaviour
         {
             Instance = this;
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,6 +48,7 @@ public class GameUIHandler : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+        Destroy(gameObject);
     }
 
     private void OnResumeButtonClicked()

@@ -35,6 +35,11 @@ public class ShipController : MonoBehaviour
     private float _currentHealth = 3.0f;
     private int _maxHealth = 3;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,19 +80,21 @@ public class ShipController : MonoBehaviour
             Destroy(collision.gameObject);
             score++;
             GameUIHandler.Instance.SetStarValue(score);
+            if (score == 10)
+            {
+                SceneFader.Instance.FadeToScene("Level_03", 0.5f);
+            }
         }
         if (collision.CompareTag("Asteroid"))
         {
             audioManager.PlayExplodeSound();
             if (shield == null)
             {
-                // Destroy(gameObject);
                 _currentHealth -= 1.0f;
                 GameUIHandler.Instance.SetHealthValue(_currentHealth / (float)_maxHealth);
-                Debug.Log("Health: " + _currentHealth);
+
                 if (_currentHealth <= 0)
                 {
-                    Debug.Log("Game Over");
                     Destroy(gameObject);
                     SceneManager.LoadScene("EndGame");
                 }
