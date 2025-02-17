@@ -44,7 +44,7 @@ public class GameSpawner : MonoBehaviour
     private float starSpawnFromAsteroidFactor = 2f;
 
     [Header("Power-Up Settings")]
-    public GameObject[] powerUpPrefabs; // Shield, Health, Ammo
+    public GameObject[] powerUpPrefabs;
     private List<int> powerUpDropBuckets = new List<int> { 1, 2, 3, 4, 5 };
     private int asteroidKillCount = 0;
     private int nextPowerUpDrop = 5;
@@ -99,7 +99,6 @@ public class GameSpawner : MonoBehaviour
     private void InitializeData()
     {
         scrollingBackground = (ScrollingBackgound)FindAnyObjectByType(typeof(ScrollingBackgound));
-        Debug.Log("Background object found: " + scrollingBackground.name);
         maxSpawnPos = Camera.main.orthographicSize * Camera.main.aspect - 1f;
         lastStarActiveTime = Time.time - starSpawnDelay + 2;
         minWidthSpawn = maxSpawnPos / 2;
@@ -115,6 +114,7 @@ public class GameSpawner : MonoBehaviour
         {
             GameObject obj = Instantiate(prefab);
             obj.SetActive(false);
+            obj.transform.SetParent(transform);
             pool.Enqueue(obj);
             if (pool.Equals(asteroidPool))
                 asteroidsInPool++; // for debugging purposes
@@ -132,11 +132,8 @@ public class GameSpawner : MonoBehaviour
                 asteroidsInPool--; // for debugging purposes
             else if (pool.Equals(starPool))
                 starsInPool--; // for debugging purposes
-            var obj = pool.Dequeue();
-            Debug.Log("obj take from pool: " + obj);
-            return obj;
+            return pool.Dequeue();
         }
-        Debug.Log("pool count: " + pool.Count);
         return Instantiate(prefab);
     }
 
@@ -154,7 +151,6 @@ public class GameSpawner : MonoBehaviour
     private void SpawnAsteroid()
     {
         GameObject asteroidObject = GetObjectFromPool(asteroidPool, asteroidPrefab);
-        Debug.Log("Asteroid object found: " + asteroidObject);
         asteroidObject.transform.position = RandomSpawnPosition();
         asteroidObject.transform.localScale = RandomSize();
         asteroidObject.SetActive(true);
@@ -178,6 +174,7 @@ public class GameSpawner : MonoBehaviour
     {
         DropStar(position, size);
         asteroidKillCount++;
+        Debug.Log($"Drop powerUp: {asteroidKillCount} / {nextPowerUpDrop}");
         if (asteroidKillCount >= nextPowerUpDrop)
         {
             DropPowerUp(position);
@@ -222,19 +219,14 @@ public class GameSpawner : MonoBehaviour
         //Debug.Log($"--Asteroid speed increment: {currentAsteroidSpeedIncrement}");
         //Debug.Log($"---Asteroid spawn rate: {asteroidSpawnRate}");
         GameUIHandler.Instance.SetStarValue(score);
-        //if (score == 10)
-        //{
-        //    SceneManager.LoadScene("Level_02");
-        //    Debug.Log("asteroid pool count after load scene: " + asteroidPool.Count);
-        //    foreach (var s in asteroidPool)
-        //    {
-        //        Debug.Log("asteroid pool: " + s);
-        //    }
-        //}
-        //else if (score == 20)
-        //{
-        //    SceneManager.LoadScene("Level_03");
-        //}
+        if (score == 10)
+        {
+            SceneManager.LoadScene("Level_02");
+        }
+        else if (score == 20)
+        {
+            SceneManager.LoadScene("Level_03");
+        }
     }
 
     // -------------------- [PATTERN SPAWNING FUNCTIONS] --------------------
@@ -353,6 +345,7 @@ public class GameSpawner : MonoBehaviour
     private void DropStar(Vector2 center, float zoneSize)
     {
         int numStars = Mathf.RoundToInt(zoneSize * starSpawnFromAsteroidFactor);
+        numStars = numStars < 1 ? 1 : numStars;
         for (int i = 0; i < numStars; i++)
         {
             Vector2 spawnPos = center + Random.insideUnitCircle * zoneSize;

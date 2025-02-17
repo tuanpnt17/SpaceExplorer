@@ -54,10 +54,16 @@ public class ShipController : MonoBehaviour
     private float objectHeight;
 
     // health
-    private float _currentHealth = 3.0f;
     private int _maxHealth = 3;
 
     private Vector2 spawnPoint;
+
+    public GameObject[] dontDestroyOnLoadGameObjs;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -125,6 +131,11 @@ public class ShipController : MonoBehaviour
 
                 if (hp <= 0)
                 {
+                    foreach (var obj in dontDestroyOnLoadGameObjs)
+                    {
+                        Destroy(obj);
+                    }
+                    Destroy(gameObject);
                     SceneManager.LoadScene("EndGame");
                 }
             }
@@ -136,9 +147,9 @@ public class ShipController : MonoBehaviour
         if (collision.CompareTag("❤️"))
         {
             GainHP(1);
-			GameUIHandler.Instance.SetHealthValue(hp / (float)_maxHealth);
-		}
-		if (collision.CompareTag("🚀🚀🚀"))
+            GameUIHandler.Instance.SetHealthValue(hp / (float)_maxHealth);
+        }
+        if (collision.CompareTag("🚀🚀🚀"))
         {
             StartCoroutine(TripleShotPowerUp());
         }
@@ -160,7 +171,6 @@ public class ShipController : MonoBehaviour
         transform.position = spawnPoint;
         ShieldBuff();
     }
-
 
     private void HandleSpaceShooting()
     {
