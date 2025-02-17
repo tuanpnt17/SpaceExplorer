@@ -14,7 +14,8 @@ public class ShipController : MonoBehaviour
     [SerializeField]
     private float projectileSpeed = 10f;
     private AudioManager audioManager;
-    public int score = 0;
+
+    //public int score = 0;
 
     [SerializeField]
     private GameObject projectilePrefab;
@@ -37,6 +38,8 @@ public class ShipController : MonoBehaviour
 
     private bool isLoadLevel2 = false;
     private bool isLoadLevel3 = false;
+
+    //private int score;
 
     private void Awake()
     {
@@ -81,16 +84,7 @@ public class ShipController : MonoBehaviour
         {
             audioManager.PlayCollectSound();
             Destroy(collision.gameObject);
-            score++;
-            GameUIHandler.Instance.SetStarValue(score);
-            if (score == 10)
-            {
-                SceneManager.LoadScene("Level_02");
-            }
-            else if (score == 20)
-            {
-                SceneManager.LoadScene("Level_03");
-            }
+            //score++;
         }
         if (collision.CompareTag("Asteroid"))
         {
