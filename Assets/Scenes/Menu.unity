@@ -182,11 +182,11 @@ MonoBehaviour:
     - Avoid obstacles to stay alive.
 
 
-    - Collect stars
-    to increase your score.
+    - Collect stars,
+    heart, shield to increase your score.
 
 
-    - The game gets faster as you progress!
+    - You start with 3 lives (hearts).
 
 '
   m_isRightToLeft: 0
@@ -2143,7 +2143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1817944838
 RectTransform:
   m_ObjectHideFlags: 0
