@@ -1,4 +1,4 @@
-# Đây là nhánh zollie
+# Đây là nhánh jadevpham
 
 - Màn load game, màn hình chính (highest scored, play button, instruction button)
 - Màn hình end game (Current score, return to main menu, quit game)

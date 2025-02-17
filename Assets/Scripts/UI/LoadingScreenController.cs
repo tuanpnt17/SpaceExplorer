@@ -1,43 +1,20 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 public class LoadingScreenController : MonoBehaviour
 {
-    public VideoPlayer videoPlayer;  
-    private AsyncOperation asyncLoad;
+    public float delayTime = 3f; // Thời gian load màn hình
 
     void Start()
     {
-       
-        videoPlayer.isLooping = true;  
-        videoPlayer.Play();
-
-        // StartCoroutine(LoadMainMenuAsync());
-
-        StartCoroutine(LoadMenuAfterDelay(3f));
-
+        StartCoroutine(LoadMenuAfterDelay());
     }
 
-    IEnumerator LoadMainMenuAsync()
+    IEnumerator LoadMenuAfterDelay()
     {
-        asyncLoad = SceneManager.LoadSceneAsync("Menu");
-        asyncLoad.allowSceneActivation = false;  
-
-        while (!asyncLoad.isDone)
-        {
-            if (asyncLoad.progress >= 0.9f)
-            {
-                asyncLoad.allowSceneActivation = true;
-            }
-            yield return null;
-        }
-    }
-
-    IEnumerator LoadMenuAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);  
-        SceneManager.LoadScene("Menu");          
+        yield return new WaitForSeconds(delayTime); // Đợi 3 giây
+        SceneManager.LoadScene("Menu"); // Chuyển sang Menu Scene
     }
 }
