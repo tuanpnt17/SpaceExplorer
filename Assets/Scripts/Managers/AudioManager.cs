@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        //PlayBackgroundMusic();
+        PlayBackgroundMusic();
     }
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
 
     void PlayBackgroundMusic()
     {
+        backgroundSource.loop = true;
         backgroundSource.clip = backgroudClip;
         backgroundSource.Play();
     }

@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Star
-  - Shield
-  - Asteroid
-  - Projectile
+  - "\u2B50"
+  - "\u2764\uFE0F"
+  - "\U0001F680"
+  - "\U0001F680\U0001F680\U0001F680"
+  - "\u2604\uFE0F"
+  - "\U0001F6E1\uFE0F"
   layers:
   - Default
   - TransparentFX
