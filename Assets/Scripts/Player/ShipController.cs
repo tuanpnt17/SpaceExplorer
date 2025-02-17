@@ -35,6 +35,9 @@ public class ShipController : MonoBehaviour
     private float _currentHealth = 3.0f;
     private int _maxHealth = 3;
 
+    private bool isLoadLevel2 = false;
+    private bool isLoadLevel3 = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -82,7 +85,11 @@ public class ShipController : MonoBehaviour
             GameUIHandler.Instance.SetStarValue(score);
             if (score == 10)
             {
-                SceneFader.Instance.FadeToScene("Level_03", 0.5f);
+                SceneManager.LoadScene("Level_02");
+            }
+            else if (score == 20)
+            {
+                SceneManager.LoadScene("Level_03");
             }
         }
         if (collision.CompareTag("Asteroid"))

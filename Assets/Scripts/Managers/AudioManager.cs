@@ -1,26 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource backgroundSource;
-	[SerializeField] private AudioSource effectSource;
-	[SerializeField] private AudioClip backgroudClip;
-	[SerializeField] private AudioClip shootClip;
-    [SerializeField] private AudioClip collectClip;
-	[SerializeField] private AudioClip explodeClip;
+    [SerializeField]
+    private AudioSource backgroundSource;
 
-	// Start is called before the first frame update
-	void Start()
+    [SerializeField]
+    private AudioSource effectSource;
+
+    [SerializeField]
+    private AudioClip backgroudClip;
+
+    [SerializeField]
+    private AudioClip shootClip;
+
+    [SerializeField]
+    private AudioClip collectClip;
+
+    [SerializeField]
+    private AudioClip explodeClip;
+
+    // Start is called before the first frame update
+    void Start()
     {
         //PlayBackgroundMusic();
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() { }
+
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     void PlayBackgroundMusic()
@@ -39,9 +50,8 @@ public class AudioManager : MonoBehaviour
         effectSource.PlayOneShot(collectClip);
     }
 
-	public void PlayExplodeSound()
-	{
-		effectSource.PlayOneShot(explodeClip);
-	}
-
+    public void PlayExplodeSound()
+    {
+        effectSource.PlayOneShot(explodeClip);
+    }
 }
