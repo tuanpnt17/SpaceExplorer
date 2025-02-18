@@ -12,7 +12,6 @@ public class ShipController : MonoBehaviour
 
     [SerializeField]
     private float projectileSpeed = 10f;
-    public int score = 0;
     public int hp = 3;
 
     private Rigidbody2D rb;
@@ -114,7 +113,6 @@ public class ShipController : MonoBehaviour
         if (collision.CompareTag("⭐"))
         {
             audioManager.PlayCollectSound();
-            score++;
         }
         if (collision.CompareTag("☄️"))
         {
@@ -131,7 +129,6 @@ public class ShipController : MonoBehaviour
 
                 if (hp <= 0)
                 {
-                    ScoreManager.Instance.SaveBestScore(score);
                     foreach (var obj in dontDestroyOnLoadGameObjs)
                     {
                         Destroy(obj);

@@ -207,6 +207,7 @@ public class GameSpawner : MonoBehaviour
     public void HandleStarCollected()
     {
         score++;
+        ScoreManager.Instance.SetCurrentScore(score);
         asteroidSpawnRate = Mathf.Max(
             asteroidSpawnRate - asteroidSpawnRateDecrementPerScore,
             asteroidMinSpawnRate

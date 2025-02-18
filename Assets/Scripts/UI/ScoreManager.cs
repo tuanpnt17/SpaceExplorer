@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
 {
     private static string filePath; // Đường dẫn file JSON
     public static ScoreManager Instance { get; private set; }
+    public int currentScore;
 
     private void Awake()
     {
@@ -57,5 +58,10 @@ public class ScoreManager : MonoBehaviour
             return data.bestScore;
         }
         return 0;
+    }
+
+    public void SetCurrentScore(int score)
+    {
+        currentScore = score;
     }
 }
