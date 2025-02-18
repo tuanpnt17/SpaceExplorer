@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
     public GameObject instructionUI;
     public TextMeshProUGUI HighestScore;
     private ScoreManager scoreManager;
+
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>(); // Tự động tìm ScoreManager
@@ -23,8 +24,9 @@ public class MenuManager : MonoBehaviour
         int bestScore = scoreManager.LoadBestScore();
         Debug.Log("Best Score: " + bestScore);
 
-        HighestScore.text =  bestScore.ToString();
+        HighestScore.text = bestScore.ToString();
     }
+
     public void OnInstructionPress()
     {
         Debug.Log("Instruction");
