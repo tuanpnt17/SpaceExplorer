@@ -10,9 +10,15 @@ public class ScoreData
 public class ScoreManager : MonoBehaviour
 {
     private static string filePath; // Đường dẫn file JSON
+    public static ScoreManager Instance { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
         filePath = Application.persistentDataPath + "/bestscore.json";
         Debug.Log("✅ File JSON sẽ được lưu tại: " + filePath);
     }
@@ -36,6 +42,7 @@ public class ScoreManager : MonoBehaviour
             string json = JsonUtility.ToJson(data, true);
             File.WriteAllText(filePath, json);
         }
+        Debug.Log($"🚀 Best score: {data.bestScore}");
     }
 
     /// <summary>

@@ -6,25 +6,29 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject instructionUI;
     public TextMeshProUGUI HighestScore;
-    private ScoreManager scoreManager;
+
+    //private ScoreManager scoreManager;
+
     void Start()
     {
-        scoreManager = FindObjectOfType<ScoreManager>(); // Tự động tìm ScoreManager
+        //scoreManager = FindAnyObjectByType<ScoreManager>(); // Tự động tìm ScoreManager
 
-        if (scoreManager == null)
-        {
-            Debug.LogError("Không tìm thấy ScoreManager trong Scene!");
-            return;
-        }
+        //if (scoreManager == null)
+        //{
+        //    Debug.LogError("Không tìm thấy ScoreManager trong Scene!");
+        //    return;
+        //}
 
         // Giả sử người chơi đạt 120 điểm
         //int currentScore = 120;
         //scoreManager.SaveBestScore(currentScore);
-        int bestScore = scoreManager.LoadBestScore();
+        //int bestScore = scoreManager.LoadBestScore();
+        int bestScore = ScoreManager.Instance.LoadBestScore();
         Debug.Log("Best Score: " + bestScore);
 
-        HighestScore.text =  bestScore.ToString();
+        HighestScore.text = bestScore.ToString();
     }
+
     public void OnInstructionPress()
     {
         Debug.Log("Instruction");

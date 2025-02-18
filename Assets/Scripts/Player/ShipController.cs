@@ -131,6 +131,7 @@ public class ShipController : MonoBehaviour
 
                 if (hp <= 0)
                 {
+                    ScoreManager.Instance.SaveBestScore(score);
                     foreach (var obj in dontDestroyOnLoadGameObjs)
                     {
                         Destroy(obj);
