@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class FeatureMenu : MonoBehaviour
 {
+    public TextMeshProUGUI currentScore;
+    public TextMeshProUGUI bestScore;
+
     public void Menu()
     {
         SceneManager.LoadScene("Menu");
@@ -13,9 +16,6 @@ public class FeatureMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public TextMeshProUGUI currentScore;
-    public TextMeshProUGUI bestScore;
 
     private void Awake() { }
 

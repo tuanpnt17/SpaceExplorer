@@ -1,111 +1,113 @@
-# Đây là nhánh jadevpham
+# Space Explorer
 
-- Màn load game, màn hình chính (highest scored, play button, instruction button)
-- Màn hình end game (Current score, return to main menu, quit game)
-- Trong lúc chơi: Số ngôi sao (score) hiện tại
-- Âm thanh chung
+## Giới thiệu
 
-# Cấu trúc file thư mục của dự án
+**Space Explorer** là một game 2D thể loại Endless Runner, nơi người chơi điều khiển một phi thuyền vũ trụ di chuyển trong không gian, né tránh thiên thạch, thu thập vật phẩm và bắn hạ chướng ngại vật để sống sót lâu nhất có thể.
 
-```Arduino
-Assets/
-├── Animations/
-├── Audio/
-├── Materials/
-├── Prefabs/
-├── Scenes/
-├── Scripts/
-│ ├── Managers/
-│ ├── Player/
-│ ├── UI/
-│ ├── Enemies/
-│ └── Utilities/
-├── Sprites/
-│ ├── Spaceship/
-│ ├── Asteroids/
-│ ├── Stars/
-│ └── UI/
-├── UI/
-│ ├── Fonts/
-│ ├── Icons/
-│ └── Prefabs/
-├── VFX/
-├── Plugins/
-├── Textures/
-└── ThirdParty/
-```
+## Thành viên
 
-## Trong đó
+- SE173039 - Phạm Nguyễn Trọng Tuấn
+- SE170585 - Phạm Bích Ngọc
+- SE183124 - Phạm Xuân Hoàng
+- SE183870 - Ngô Lê Thảo Nguyên
+- SE183122 - Lê Đặng Minh Trí
 
-### Animations/
+## Thông tin game
 
-- Chứa các file animation (.anim) và animator controller (.controller).
-- Ví dụ: Animation cho Spaceship bay, Asteroids xoay, Stars sáng.
+- **Tên game:** Space Explorer
+- **Thể loại:** 2D Endless Runner
+- **Nền tảng:** PC
 
-### Audio/
+## Quy tắc chơi
 
-- Chứa tất cả các âm thanh và nhạc nền (format như .wav, .mp3).
-- Ví dụ: Âm thanh laser bắn, va chạm với Asteroids, nhạc nền gameplay.
+### Điều khiển phi thuyền
 
-### Materials/
+- **Di chuyển:** Sử dụng phím `A/D/W/S` hoặc phím mũi tên để điều khiển trái, phải, lên, xuống.
+- **Bắn đạn:** Nhấn `Space` để bắn đạn tiêu diệt thiên thạch.
 
-- Chứa các vật liệu (Materials) để áp dụng hiệu ứng ánh sáng, texture.
-- Ví dụ: Material cho Spaceship, Asteroids, background.
+### Va chạm thiên thạch
 
-### Prefabs/
+- Mỗi lần va chạm với thiên thạch, người chơi sẽ mất 1 tim.
+- Nếu mất hết 3 tim, trò chơi kết thúc (Game Over).
+- Nếu có **Shield**, nó sẽ bảo vệ phi thuyền khỏi 1 lần va chạm.
 
-- Chứa các prefab tái sử dụng (Spaceship, Asteroids, Stars, UI buttons).
+### Bắn thiên thạch
 
-### Scenes/
+- Khi bắn trúng thiên thạch, nó sẽ phát nổ và rơi **sao**.
 
-- Chứa tất cả các scene của game.
-- Ví dụ:MainMenu.unity, Gameplay.unity, EndGame.unity
+### Thu thập vật phẩm
 
-### Scripts/
+- **Heart (Tim):** Hồi 1 tim (tối đa 3 tim).
+- **Shield (Khiên bảo vệ):** Chặn 1 lần va chạm với thiên thạch.
+- **Bullet (Đạn):** Cung cấp thêm 3 viên đạn.
 
-> Chứa toàn bộ mã nguồn game, phân chia thành các nhóm:
+### Tăng độ khó theo điểm số
 
-#### Managers/:
+- Điểm càng cao, tốc độ rơi của thiên thạch càng nhanh.
+- Số lượng thiên thạch xuất hiện tăng theo thời gian.
 
-- Các script quản lý chung, ví dụ: GameManager, SceneManager, AudioManager.
+## Các màn chơi
 
-#### Player/:
+### **Scene 1: Menu**
 
-- Các script liên quan đến Spaceship, ví dụ: PlayerController, LaserController.
+- Nút bấm: **Play, Instruction, Quit**
+- Hiển thị **Best Score** của người chơi.
+- Hình nền không gian với các ngôi sao và nhạc nền.
 
-#### UI/:
+### **Scene 2: Level 1**
 
-- Các script quản lý UI như điểm số, menu, popup.
+- Màn chơi đầu tiên.
+- Bắt đầu với **3 tim** và điểm số **0**.
+- Thu thập **20 sao** để sang **Level 2**.
 
-#### Enemies/:
+### **Scene 3: Level 2**
 
-- Các script điều khiển Asteroids.
+- Tốc độ thiên thạch tăng lên.
+- Background thay đổi.
+- Thu thập **40 sao** để sang **Level 3**.
 
-#### Utilities/:
+### **Scene 4: Level 3**
 
-- Các script hỗ trợ như InputHandler, RandomSpawner.
+- Level cuối cùng.
+- Thiên thạch rơi nhanh hơn và nhiều hơn.
+- Chơi đến khi **Game Over**.
 
-### Sprites/
+### **Scene 5: End Game**
 
-> Chứa các sprite dùng trong game, phân chia theo đối tượng:
+- Hiển thị **Best Score** và **Current Score**.
+- Nút bấm: **Menu, Exit**.
 
-#### Spaceship/: Sprite Spaceship.
+## Vật phẩm trong game
 
-#### Asteroids/: Sprite Asteroids.
+### **Shield (Khiên bảo vệ)**
 
-#### Stars/: Sprite Stars.
+- **Chức năng:** Chặn 1 lần va chạm với thiên thạch.
+- **Cách sử dụng:** Tự động kích hoạt khi nhặt được.
 
-#### UI/: Icon và hình ảnh liên quan đến UI.
+### **Heart (Tim - Tăng máu)**
 
-### UI/
+- **Chức năng:** Tăng 1 tim.
+- **Cách sử dụng:** Tự động cộng vào thanh máu.
+- **Giới hạn:** Tối đa 3 tim.
 
-#### Fonts/: Chứa font chữ cho UI.
+### **Bullet (Đạn - Bổ sung đạn)**
 
-#### Icons/: Icon như nút bấm, mũi tên.
+- **Chức năng:** Tăng số lượng đạn để bắn thiên thạch.
+- **Cách sử dụng:** Nhặt vật phẩm để nhận thêm **3 viên đạn** mỗi lần.
 
-#### Prefabs/: Tạo prefab UI như menu, popup.
+## Hướng dẫn cài đặt và chơi
 
-### VFX/
+1. Clone repository:
+   ```sh
+   git clone https://github.com/tuanpnt17/SpaceExplorer.git
+   ```
+2. Mở dự án trong Unity.
+3. Chạy game trên **PC**.
 
-- Chứa các hiệu ứng đặc biệt (particle effect).
-- Ví dụ: Hiệu ứng laser bắn, vụ nổ Spaceship.
+## Liên hệ
+
+Nếu có bất kỳ câu hỏi hoặc đóng góp nào, hãy liên hệ qua email: **tuanpntse173039@fpt.edu.vn**
+
+---
+
+Cảm ơn bạn đã chơi **Space Explorer**! 🚀
