@@ -50,7 +50,7 @@ public class GameSpawner : MonoBehaviour
     private int nextPowerUpDrop = 5;
 
     [Header("Game Acceleration by Score")]
-    public int scorePerLevel = 150;
+    public int scorePerLevel = 20;
     public float scrollSpeedIncrementPerLevel = 0.25f;
     public float asteroidSpeedImcrementPerLevel = 2f;
     public float asteroidSpawnRate = 1f;
@@ -207,6 +207,7 @@ public class GameSpawner : MonoBehaviour
     public void HandleStarCollected()
     {
         score++;
+        ScoreManager.Instance.SetCurrentScore(score);
         asteroidSpawnRate = Mathf.Max(
             asteroidSpawnRate - asteroidSpawnRateDecrementPerScore,
             asteroidMinSpawnRate
@@ -219,11 +220,11 @@ public class GameSpawner : MonoBehaviour
         //Debug.Log($"--Asteroid speed increment: {currentAsteroidSpeedIncrement}");
         //Debug.Log($"---Asteroid spawn rate: {asteroidSpawnRate}");
         GameUIHandler.Instance.SetStarValue(score);
-        if (score == 10)
+        if (score == scorePerLevel)
         {
             SceneManager.LoadScene("Level_02");
         }
-        else if (score == 20)
+        else if (score == 2 * scorePerLevel)
         {
             SceneManager.LoadScene("Level_03");
         }

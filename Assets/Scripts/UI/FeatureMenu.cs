@@ -21,18 +21,10 @@ public class FeatureMenu : MonoBehaviour
 
     void Start()
     {
-        //if (currentScore == null)
-        //{
-        //    Debug.LogError("Không tìm thấy currentScore trong Scene!");
-        //    return;
-        //}
-        //if (bestScore == null)
-        //{
-        //    Debug.LogError("Không tìm thấy bestScore trong Scene!");
-        //    return;
-        //}
-        currentScore.SetText("10");
-        bestScore.SetText("20");
+        int score = ScoreManager.Instance.currentScore;
+        ScoreManager.Instance.SaveBestScore(score);
+        currentScore.text = score.ToString();
+        bestScore.text = ScoreManager.Instance.LoadBestScore().ToString();
     }
 
     public void AddScore(int amount)

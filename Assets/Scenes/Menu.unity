@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af3d149e47cc314ca69ae0f6b4ec355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScore: 0
 --- !u!4 &1646485675
 Transform:
   m_ObjectHideFlags: 0
@@ -404,7 +405,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840456393}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f6a476c92318f0f47868910d71f9345f, type: 3}
@@ -533,9 +534,27 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 603319019}
+    - target: {fileID: 757204952034821399, guid: 9e5e0ee53e835e64e9d8015016e8a86e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 757204952034821399, guid: 9e5e0ee53e835e64e9d8015016e8a86e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4325485621169538621, guid: 9e5e0ee53e835e64e9d8015016e8a86e, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411913453643995032, guid: 9e5e0ee53e835e64e9d8015016e8a86e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749713265660703147, guid: 9e5e0ee53e835e64e9d8015016e8a86e, type: 3}
+      propertyPath: m_text
+      value: "- Avoid obstacles to stay alive.\n\n- Collect stars, heart, shield
+        to increase your score.\n\n- You start with 3 lives (hearts).\n\n- Click
+        \"space\" to shoot. \n\n- Use ASWD to move the ship."
       objectReference: {fileID: 0}
     - target: {fileID: 9200757623261903492, guid: 9e5e0ee53e835e64e9d8015016e8a86e, type: 3}
       propertyPath: m_Pivot.x

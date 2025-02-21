@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 4378207393665546535, guid: 303d4865e27efac44ba71e9d5f0dc6c3, type: 3}
-  asteroidSpawnRate: 1
-  minSpeed: 2
-  maxSpeed: 4
+  minBaseSpeed: 2
+  maxBaseSpeed: 4
   minRotationSpeed: -60
   maxRotationSpeed: 60
   minSize: 0.5
@@ -55,11 +54,16 @@ MonoBehaviour:
   minAngle: 265
   maxAngle: 275
   starPrefab: {fileID: 805811063737655395, guid: b0b561fce51d27a45b7bc78bb08443c9, type: 3}
-  spawnDelay: 2
+  starSpawnDelay: 2
   spacing: 1
-  animationFractionIncrement: 0.1
   powerUpPrefabs:
   - {fileID: 5551670452222825646, guid: 8a7f80021a1791142b0565c1542f37b2, type: 3}
   - {fileID: 8821301954355226656, guid: a036b7d8a495af54699f79a37fe5a02d, type: 3}
   - {fileID: 1090341312697485635, guid: ead62b82b15462e449a37a0d1ccb0aec, type: 3}
+  scorePerLevel: 20
+  scrollSpeedIncrementPerLevel: 0.25
+  asteroidSpeedImcrementPerLevel: 2
+  asteroidSpawnRate: 1
+  asteroidSpawnRateDecrementPerLevel: 0.2
+  asteroidMinSpawnRate: 0.4
   speed: 1

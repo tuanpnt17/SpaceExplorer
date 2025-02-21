@@ -12,6 +12,7 @@ public class GameUIHandler : MonoBehaviour
     private Button _resumeButton;
     private Button _returnMainMenuButton;
     public static GameUIHandler Instance { get; private set; }
+    public GameObject[] dontDestroyOnLoadGameObjs;
 
     private void Awake()
     {
@@ -46,6 +47,10 @@ public class GameUIHandler : MonoBehaviour
 
     private void OnReturnMainMenuButtonClicked()
     {
+        foreach (var x in dontDestroyOnLoadGameObjs)
+        {
+            Destroy(x);
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
         Destroy(gameObject);
